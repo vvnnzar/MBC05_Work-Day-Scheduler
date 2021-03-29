@@ -6,7 +6,7 @@ var currentHour = parseInt(moment().format("H"));
 
 $("#currentDay").append(todaysDate);
 
-//Create schedule time slots for a work day standard business hours (9am-5pm)
+//Get saved records from local storage
 
 for (var i = 9; i < 18; i++) {
   var rec = localStorage.getItem("scheduledEvent" + i);
@@ -18,17 +18,16 @@ for (var i = 9; i < 18; i++) {
 
   if (rec != null) {
     localRec = JSON.parse(rec);
-    // console.log(localRec.recordTime);
-    // console.log(localRec.recordDescription);
     readRecord.recordTime = localRec.recordTime;
     readRecord.recordDescription = localRec.recordDescription;
   }
 
+  //Create schedule time slots for a work day standard business hours (9am-5pm)
   var scheduleElement = $("<div>").addClass("row time-block");
   var scheduleTimeObject = moment().hour(i);
   var hourTextDisplay = moment(scheduleTimeObject).format("hA");
 
-  //Create "Hour' for schedule grid template
+  //Create "Hour' column
   if (i <= 17) {
     // $("<div />", { class: "wrapper", id: "product" + i });
     var hourTimeSlotElement = $("<div>", { id: "timeSlot" + i })
@@ -36,7 +35,7 @@ for (var i = 9; i < 18; i++) {
       .text(hourTextDisplay);
   }
 
-  //Create "Event" for schedule grid template
+  //Create event "Description" colum for user input of data
   var descriptionColumn = $("<textarea>", { id: "scheduleDesc" + i })
     .addClass("col-8 col-sm-10 description")
     .text(readRecord.recordDescription);
@@ -46,7 +45,7 @@ for (var i = 9; i < 18; i++) {
     .addClass("col-2 col-sm-1 saveBtn p-4")
     .html('<i class="far fa-save"></i>');
 
-  //Structure template
+  //Structure template by appending divs
   scheduleElement.append(
     hourTimeSlotElement,
     descriptionColumn,
@@ -56,7 +55,7 @@ for (var i = 9; i < 18; i++) {
   // Append template to the container element
   $(".container").append(scheduleElement);
 
-  // Timeslot color coding used to identify past, present and future hours
+  // Color coding of timeslots to identify past, present and future hours
 
   if (i < currentHour) {
     descriptionColumn.addClass("past");
