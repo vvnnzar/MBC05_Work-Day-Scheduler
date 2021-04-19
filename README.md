@@ -14,7 +14,7 @@ This app will run in the browser and feature dynamically updated HTML and CSS po
 
 
 ### Project Link 
-
+https://vvnnzar.github.io/MBC05_Work-Day-Scheduler/
 
 
 ### Screen layout and Design
@@ -67,8 +67,8 @@ To update the project with latest code:
 4. Commit files using command git commit -m "My commit message"
 5. Push files to gitlab main branch using command git push
 
-### Built With
-* Hope to understand more soon :) 
+### Technologies Used
+* HTML, CSS, JavaScript
 
 ### Versioning
 
@@ -76,5 +76,6 @@ Initial Release v1.0 -29/03/2021
 
 ### License
 
-This project is licensed under xxx 2020
+MIT
+Vivianne Zara @ zara:Code 2020
 
